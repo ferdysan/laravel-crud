@@ -23,7 +23,21 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-      dd('sono in store');
+     // tramite il request vado a prendermi tutti i dati che mi passa la create
+      $dati = $request->all();
+      $new_product = new Product();
+      // $new_product->name = $dati['name'];
+      // $new_product->description = $dati['description'];
+      // $new_product->category = $dati['category'];
+      // $new_product->price = $dati['price'];
+      // $new_product->sale_price = $dati['sale_price'];
+      $new_product->fill($dati);
+      $new_product->save();
+
+      // posso far vedere la view del product store
+      // return view('products.store');
+    // oppure fare un redirect automatico alla index
+      return redirect()->route('products.index');
     }
 
     public function show(Product $product)

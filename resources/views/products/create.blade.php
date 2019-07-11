@@ -7,6 +7,8 @@
   <div class="container">
 
 <form method="post" action="{{route('products.store')}}">
+  {{-- indispensabile per passare il contenuto del form alla pagina store altrimenti da errore in quanto laravel non riesce ad effettuare il controllo --}}
+  @csrf
   <div class="form-group">
     <label for="name">Nome</label>
     <input type="text" class="form-control" name ="name" placeholder="Inserisci il nome del prodotto">
