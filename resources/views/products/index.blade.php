@@ -16,6 +16,7 @@
       <th>categoria</th>
       <th>Prezzo</th>
       <th>Prezzo Scontato</th>
+      <th>Azioni</th>
     </tr>
   </thead>
   <tbody>
@@ -32,16 +33,17 @@
              {{$product->sale_price}}
          @else
            n\n
-          @endif</td>
+          @endif
+        </td>
+        <td><a href="{{route('products.show', $product->id )}}" class="btn btn-info">Visualizza</a></td>
+        <td><a href="{{route('products.edit', $product->id )}}" class="btn btn-info">Modifica</a></td></td>
       </tr>
 
     @empty
-      <td colspan"6">
+      <td colspan"7">
 
-
+         non ci sono prodotti
       </td>
-     <p>non ci sono prodotti</p>
-
     @endforelse
   @endsection
 

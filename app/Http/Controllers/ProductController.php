@@ -36,39 +36,41 @@ class ProductController extends Controller
 
       // posso far vedere la view del product store
       // return view('products.store');
+
     // oppure fare un redirect automatico alla index
       return redirect()->route('products.index');
     }
 
-    public function show(Product $product)
+    public function show( $product_id)
     {
-        //
+        $product = Product::find($product_id);
+        // se il prodotto non esiste quindi è vuoto
+        // reindirizzo ad una pagina 404
+        if (empty($product)) {
+          abort(404);
+        }
+        return view('products.show', compact('product'));
     }
 
 
-    public function edit(Product $product)
+    public function edit($product_id)
     {
-        //
+      $product = Product::find($product_id);
+      // se il prodotto non esiste quindi è vuoto
+      // reindirizzo ad una pagina 404
+      if (empty($product)) {
+        abort(404);
+      }
+      return view('products.edit', compact('product'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Product $product)
+
+    public function update(Request $request,  $product)
     {
-        //
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Product $product)
     {
         //
