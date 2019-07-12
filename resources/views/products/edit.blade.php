@@ -10,7 +10,7 @@
 
 <form method="post" action="{{route('products.update' , $product->id)}}">
   {{-- indispensabile per passare il contenuto del form alla pagina store altrimenti da errore in quanto laravel non riesce ad effettuare il controllo --}}
-  {{method_field('PUT')}}
+  @method('PUT')
   @csrf
   <div class="form-group">
     <label for="name">Nome</label>

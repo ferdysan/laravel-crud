@@ -65,13 +65,17 @@ class ProductController extends Controller
     }
 
 
-    public function update(Request $request,  $product)
+    public function update(Request $request, $product_id)
     {
+        $data= $request->all();
+        $prodotto= Product::find($product_id);
+        $prodotto->update($data);
 
+        return redirect()->route('products.index');
     }
 
 
-    public function destroy(Product $product)
+    public function destroy($product_id)
     {
         //
     }
